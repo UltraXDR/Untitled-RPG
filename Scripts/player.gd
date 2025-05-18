@@ -12,5 +12,13 @@ func _process(delta: float) -> void:
 		velocity.y -= 1
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-	position.x += velocity.x * speed * delta
-	position.y += velocity.y * speed * delta
+	if velocity.x != 0 and velocity.y != 0:
+		velocity = velocity * speed / 1.414213562 
+	else :
+		velocity = velocity * speed
+	move_and_slide()
+	
+	if Input.is_action_just_pressed("attack"):
+		print("Attacked!!!")
+	
+	
